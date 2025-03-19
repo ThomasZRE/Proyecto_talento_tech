@@ -1,0 +1,246 @@
+/* Fuente y colores generales */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.seccion {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #1b2a41; /* Color de fondo oscuro */
+    color: white;
+}
+
+.titulo-seccion {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #f39c12; /* Naranja para destacar */
+}
+
+.info-paises {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.graficos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+canvas {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*      */
+
+:root {
+    --color-primario: #2c3e50;
+    --color-secundario: #3498db;
+    --color-texto: #ecf0f1;
+    --color-fondo: #1a252f;
+    --color-acento: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* Estilo del encabezado */
+header {
+    background: var(--color-primario);
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-acento);
+}
+
+/* Navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-texto);
+    font-size: 16px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--color-acento);
+}
+
+/* Secciones */
+section {
+    padding: 80px 15%;
+    min-height: 100vh;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--color-secundario);
+}
+
+p {
+    font-size: 18px;
+    color: var(--color-texto);
+}
+
+/* Efecto de animación al entrar en pantalla */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--color-primario);
+    color: var(--color-texto);
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    section {
+        padding: 60px 10%;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
+.contenedor-graficos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+
+
+/* Seccion Indicadores clave*/
+
+#indicadores {
+    background-color: #1c1f26;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.indicadores-lista {
+    
+    text-align: left;
+    
+    max-width: 400px;
+    margin: 0 ;
+    font-size: 18px;
+}
+
+.indicadores-lista ul {
+    list-style: none;
+   
+    padding: 0;
+    
+
+}
+
+.indicadores-lista li {
+   
+    margin: 10px 0;
+}
+
+#graficoCircular {
+    max-width: 400px;  /* Ajusta el ancho */
+    max-height: 400px; /* Ajusta la altura */
+    
+}
+.grafico-indicadores {
+    display: flex;
+    justify-content: left;
+}
+
+
+    
+

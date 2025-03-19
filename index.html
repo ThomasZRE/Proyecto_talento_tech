@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERGÉTICA 360 - Comparación Energética</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+</body>
+</html>
+
+<body>
+    <header>
+        <h1>ENERGÉTICA 360</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#comparacion">Comparación de Países</a></li>
+                <li><a href="#indicadores">Indicadores Clave</a></li>
+                <li><a href="#visualizaciones">Visualizaciones</a></li>
+                <li><a href="#conclusiones">Conclusiones</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Bienvenido a ERGÉTICA 360</h2>
+        <p>Analiza la transición energética de Colombia en comparación con países de Latinoamérica y Europa.</p>
+    </section>
+
+    <section id="comparacion" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Comparación de Países</h2>
+            <p>Analizamos el avance de distintos países en la transición hacia energías renovables.</p>
+    
+            <div class="info-paises">
+                <h3>🌎 Latinoamérica</h3>
+                <p>Brasil, Chile, México y Uruguay han liderado la adopción de energías renovables en la región.</p>
+    
+                <h3>En Europa</h3>
+                <p>Alemania, Noruega, Dinamarca, Portugal y Suecia son referentes en transición energética.</p>
+            </div>
+    
+            <div class="graficos">
+                <canvas id="graficoEnergia"></canvas>
+                <canvas id="graficoEvolucion"></canvas>
+            </div>
+        </div>
+    </section>
+    
+    <section id="indicadores" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Indicadores Clave</h2>
+            <p>Visualiza los factores más importantes en la transición energética.</p>
+    
+            <div class="indicadores-lista">
+                <h3>🔹 Indicadores Principales</h3>
+                <ul>
+                    <li>📊 <strong>Porcentaje de renovables</strong> en el consumo total de energía (tendencia histórica).</li>
+                    <li>📈 <strong>Tasa de crecimiento</strong> anual de energías renovables.</li>
+                </ul>
+                <h3>📊 Distribución de Energías Renovables en Colombia</h3>
+            </div>
+    
+            <div class="grafico-indicadores">
+                
+                <canvas id="graficoCircular"></canvas>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+
+
+
+    <section id="visualizaciones">
+        <h2>Visualizaciones Interactivas</h2>
+        <p>Gráficos y mapas interactivos con datos de energías renovables.</p>
+    </section>
+
+    <section id="conclusiones">
+        <h2>Conclusiones y Recomendaciones</h2>
+        <p>Análisis de los resultados y posibles estrategias para Colombia.</p>
+    </section>
+
+    <footer>
+        <p>Proyecto de Energía Renovable - 2025</p>
+    </footer>
+
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
