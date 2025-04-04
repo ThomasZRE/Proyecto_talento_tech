@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERGÉTICA 360 - Comparación Energética</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+</body>
+</html>
+
+<body>
+
+    <table> log</table>
+    <header>
+        <h1>ENERGÉTICA 360</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#comparacion">Comparación de Países</a></li>
+                <li><a href="#indicadores">Indicadores Clave</a></li>
+                <li><a href="#visualizaciones">Visualizaciones</a></li>
+                <li><a href="#conclusiones">Conclusiones</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Bienvenido a ERGÉTICA 360</h2>
+        <p>Analiza la transición energética de Colombia en comparación con países de Latinoamérica y Europa.</p>
+    </section>
+
+    <section id="comparacion" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Comparación de Países</h2>
+            <p>Analizamos el avance de distintos países en la transición hacia energías renovables.</p>
+
+            <div class="api-test" id="grafico-test"></div>
+
+
+            <div class="info-paises">
+                <h3>🌎 Latinoamérica</h3>
+                <p>Brasil, Chile, México y Uruguay han liderado la adopción de energías renovables en la región.</p>
+    
+                <h3>En Europa</h3>
+                <p>Alemania, Noruega, Dinamarca, Portugal y Suecia son referentes en transición energética.</p>
+            </div>
+    
+            <div class="graficos">
+                <canvas id="graficoEnergia"></canvas>
+                <canvas id="graficoEvolucion"></canvas>
+            </div>
+        </div>
+    </section>
+    
+    <section id="indicadores" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Indicadores Clave</h2>
+            <p>Visualiza los factores más importantes en la transición energética.</p>
+    
+            <div class="indicadores-lista">
+                <h3>🔹 Indicadores Principales</h3>
+                <ul>
+                    <li>📊 <strong>Porcentaje de renovables</strong> en el consumo total de energía (tendencia histórica).</li>
+                    <li>📈 <strong>Tasa de crecimiento</strong> anual de energías renovables.</li>
+                </ul>
+                <h3>📊 Distribución de Energías Renovables en Colombia</h3>
+            </div>
+    
+            <div class="grafico-indicadores">
+                
+                <canvas id="graficoCircular"></canvas>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+
+
+
+    <section id="visualizaciones">
+        <h2>Visualizaciones Interactivas</h2>
+        <p>Gráficos y mapas interactivos con datos de energías renovables.</p>
+    </section>
+
+    <section id="conclusiones">
+        <h2>Conclusiones y Recomendaciones</h2>
+        <p>Análisis de los resultados y posibles estrategias para Colombia.</p>
+    </section>
+
+    <footer>
+        <p>Proyecto de Energía Renovable - 2025</p>
+    </footer>
+
+    
+    <script src="script.js"></script>
+    <script>
+        const apitest = document.getElementById('grafico-test');
+        const url = 'http://localhost:8080/timeline/Argentina';
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const ctx = apitest.getContext('2d');
+
+                console.log(data);
+                porcentajes = data.map(item => item.porcentaje);
+                console.log(porcentajes);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+
+
+        const datosEnergia = {
+            labels: ["Argentina"], // Etiquetas del eje X
+            datasets: [{
+            label: "Producción de Energía Renovable en Argentina (GW)", // Leyenda del gráfico
+            data: [], // Datos de producción de energía
+            backgroundColor: [
+                "#3498db", // Colombia
+                "#2ecc71", // Brasil
+                "#f1c40f", // Alemania
+                "#9b59b6", // Chile
+                "#e74c3c", // Noruega
+                "#e67e22", // México
+                "#34495e", // Dinamarca
+                "#1abc9c", // Uruguay
+                "#d35400", // Portugal
+                "#2FACA2"  // Suecia
+            ],
+            borderColor: [
+                "#2980b9", // Colombia
+                "#27ae60", // Brasil
+                "#f39c12", // Alemania
+                "#8e44ad", // Chile
+                "#c0392b", // Noruega
+                "#d35400", // México
+                "#2c3e50", // Dinamarca
+                "#16a085", // Uruguay
+                "#e67e22", // Portugal
+                "#249c92"  // Suecia
+            ],
+            borderWidth: 1 // Ancho del borde de las barras
+        }]
+    };
+
+    // Opciones del gráfico de barras
+    const opcionesGrafico = {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: "Comparación de Producción de Energía Renovable (2025)",
+                font: { size: 16 }
+            },
+            legend: {
+                position: "bottom",
+                labels: { font: { size: 12 } }
+            },
+            tooltip: {
+                enabled: true, 
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return `${tooltipItem.label}: ${tooltipItem.raw} GW`;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: { display: true, text: "Producción (GW)" }
+            },
+            x: {
+                title: { display: true, text: "Países" }
+            }
+        },
+        animation: {
+            duration: 1000,
+            easing: "easeInOutQuad"
+        }
+    };
+
+    /*
+        // Crear el gráfico de barras
+        new Chart(ctx, {
+        type: "bar",
+        data: datosEnergia,
+        options: opcionesGrafico
+    });
+    */
+
+    </script>
+    
+</body>
+</html>
