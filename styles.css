@@ -1,62 +1,17 @@
-/* Fuente y colores generales */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-.seccion {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #1b2a41; /* Color de fondo oscuro */
-    color: white;
-}
-
-.titulo-seccion {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #f39c12; /* Naranja para destacar */
-}
-
-.info-paises {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
-.graficos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-}
-
-canvas {
-    max-width: 600px;
-    width: 100%;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/*      */
+/* Importar fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --color-primario: #2c3e50;
-    --color-secundario: #3498db;
-    --color-texto: #ecf0f1;
-    --color-fondo: #1a252f;
-    --color-acento: #f39c12;
+    --color-primario: #ffffff;
+    --color-secundario: #f8f9fa;
+    --color-texto: #212529;
+    --color-subtitulo: #495057;
+    --color-fondo: #ffffff;
+    --color-acento: #0d6efd;
+    --color-acento-hover: #0b5ed7;
+    --color-borde: #dee2e6;
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transicion: all 0.3s ease;
 }
 
 * {
@@ -76,69 +31,266 @@ body {
 /* Estilo del encabezado */
 header {
     background: var(--color-primario);
-    padding: 20px;
+    padding: 18px 0;
     text-align: center;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--sombra);
+    border-bottom: 1px solid var(--color-borde);
 }
 
 header h1 {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
-    color: var(--color-acento);
+    color: var(--color-texto);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
-/* Navegación */
+/* Estilo de navegación */
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
     padding: 10px;
-}
-
-nav ul li {
-    margin: 0 15px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: var(--color-texto);
     font-size: 16px;
-    font-weight: 400;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition: var(--transicion);
+    position: relative;
+    padding: 5px 2px;
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-acento);
+    transition: var(--transicion);
 }
 
 nav ul li a:hover {
     color: var(--color-acento);
 }
 
-/* Secciones */
+nav ul li a:hover:after {
+    width: 100%;
+}
+
+/* Estilo de sección */
 section {
-    padding: 80px 15%;
+    padding: 100px 5%;
     min-height: 100vh;
     text-align: center;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
+    animation: aparecer 1s forwards;
+}
+
+.seccion {
+    padding: 70px 30px;
+    text-align: center;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    margin: 30px 0;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.titulo-seccion {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    color: var(--color-texto);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.titulo-seccion:after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: var(--color-acento);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: var(--color-secundario);
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: var(--color-subtitulo);
+    margin: 25px 0 15px;
+    font-weight: 500;
 }
 
 p {
-    font-size: 18px;
+    font-size: 1.1rem;
     color: var(--color-texto);
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
 }
 
-/* Efecto de animación al entrar en pantalla */
-@keyframes fadeInUp {
+/* Estilo de información de países */
+.info-paises {
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+    padding: 25px 30px;
+    background: var(--color-primario);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+    border-left: 4px solid var(--color-acento);
+}
+
+.info-paises h3 {
+    color: var(--color-texto);
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.info-paises p {
+    margin-bottom: 15px;
+}
+
+/* Contenedores de gráficos */
+.graficos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contenedor-graficos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--color-primario);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+    border: 1px solid var(--color-borde);
+}
+
+.contenedor-graficos:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Estilo de canvas */
+canvas {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--color-borde);
+}
+
+#graficoCircular {
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    height: auto;
+}
+
+#graficoLinea {
+    max-width: 800px;
+    height: auto;
+    min-height: 400px;
+}
+
+/* Sección de indicadores */
+#indicadores {
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+    text-align: center;
+    padding: 50px 30px;
+    border-radius: 10px;
+    box-shadow: var(--sombra);
+}
+
+.indicadores-lista {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 18px;
+    padding: 20px 25px;
+    background: var(--color-primario);
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+}
+
+.indicadores-lista ul {
+    list-style: none;
+    padding: 0;
+}
+
+.indicadores-lista li {
+    margin: 15px 0;
+    padding-left: 30px;
+    position: relative;
+}
+
+.indicadores-lista li:before {
+    content: '•';
+    color: var(--color-acento);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+}
+
+.grafico-indicadores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* Animación keyframes */
+@keyframes aparecer {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -149,98 +301,162 @@ p {
     }
 }
 
-
-
-/* Footer */
+/* Estilo del pie de página */
 footer {
     text-align: center;
-    padding: 20px;
-    background: var(--color-primario);
+    padding: 30px;
+    background: var(--color-secundario);
     color: var(--color-texto);
     margin-top: 40px;
+    border-top: 1px solid var(--color-borde);
 }
 
-/* RESPONSIVE */
+/* Diseño responsivo */
+@media (max-width: 992px) {
+    .seccion {
+        padding: 50px 20px;
+    }
+    
+    .titulo-seccion {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    #graficoCircular {
+        max-width: 500px;
+        max-height: 500px;
+    }
+}
+
 @media (max-width: 768px) {
     section {
-        padding: 60px 10%;
+        padding: 80px 5%;
+    }
+    
+    header {
+        padding: 15px 0;
     }
     
     nav ul {
         flex-direction: column;
+        gap: 15px;
     }
-
+    
     nav ul li {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
+    
+    .info-paises {
+        padding: 20px;
+    }
+    
+    .contenedor-graficos {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .titulo-seccion {
+        font-size: 1.7em;
+    }
+    
+  
+    
+    #graficoLinea {
+        min-height: 350px;
+    }
+}
+
+
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.selector-pais {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.selector-pais label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+select:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.25);
+}
+
+optgroup {
+    font-weight: bold;
 }
 
 .contenedor-graficos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    opacity: 0;
-    transform: translateY(30px);
+    /* Establecido para ser visible de inmediato */
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-
-
-canvas {
-    width: 100% !important;
-    height: auto !important;
+.chart-container {
+    height: 400px;
+    position: relative;
+    margin-bottom: 20px;
 }
 
-
-
-/* Seccion Indicadores clave*/
-
-#indicadores {
-    background-color: #1c1f26;
-    color: white;
+#infoEnergia {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 20px auto 0;
     text-align: center;
-    padding: 40px 20px;
 }
 
-.indicadores-lista {
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
     
-    text-align: left;
-    
-    max-width: 400px;
-    margin: 0 ;
-    font-size: 18px;
+    .chart-container {
+        height: 300px;
+    }
 }
 
-.indicadores-lista ul {
-    list-style: none;
-   
-    padding: 0;
-    
+/* Visualizaciones */
 
-}
-
-.indicadores-lista li {
-   
-    margin: 10px 0;
-}
-
-#graficoCircular {
-    max-width: 400px;  /* Ajusta el ancho */
-    max-height: 400px; /* Ajusta la altura */
-    
-}
-.grafico-indicadores {
-    display: flex;
-    justify-content: left;
-}
-
-
-    
 

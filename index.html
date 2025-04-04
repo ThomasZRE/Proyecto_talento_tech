@@ -6,6 +6,7 @@
     <title>ERGÉTICA 360 - Comparación Energética</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
 </head>
 
@@ -47,29 +48,42 @@
             </div>
     
             <div class="graficos">
-                <canvas id="graficoEnergia"></canvas>
+               
                 <canvas id="graficoEvolucion"></canvas>
             </div>
+            
         </div>
     </section>
     
     <section id="indicadores" class="seccion">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Indicadores Clave</h2>
-            <p>Visualiza los factores más importantes en la transición energética.</p>
-    
-            <div class="indicadores-lista">
-                <h3>🔹 Indicadores Principales</h3>
-                <ul>
-                    <li>📊 <strong>Porcentaje de renovables</strong> en el consumo total de energía (tendencia histórica).</li>
-                    <li>📈 <strong>Tasa de crecimiento</strong> anual de energías renovables.</li>
-                </ul>
-                <h3>📊 Distribución de Energías Renovables en Colombia</h3>
+         <div class="container">
+            <h2 class="titulo-seccion">Indicadores</h2>
+           
+            <h1>Distribución de Energías Renovables por País</h1>
+            
+            <div class="selector-pais">
+                <label for="selectorPais">Seleccionar país:</label>
+                <select id="selectorPais">
+                    <optgroup label="Latinoamérica">
+                        <option value="Brasil">Brasil</option>
+                        <option value="Chile">Chile</option>
+                        <option value="México">México</option>
+                        <option value="Uruguay">Uruguay</option>
+                    </optgroup>
+                    <optgroup label="Europa">
+                        <option value="Alemania">Alemania</option>
+                        <option value="Noruega">Noruega</option>
+                        <option value="Dinamarca">Dinamarca</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Suecia">Suecia</option>
+                    </optgroup>
+                </select>
             </div>
-    
-            <div class="grafico-indicadores">
-                
-                <canvas id="graficoCircular"></canvas>
+            
+            <div class="contenedor-graficos">
+                <div class="chart-container">
+                    <canvas id="graficoCircular"></canvas>
+                </div>
             </div>
         </div>
     </section>
@@ -82,9 +96,13 @@
 
 
     <section id="visualizaciones">
-        <h2>Visualizaciones Interactivas</h2>
-        <p>Gráficos y mapas interactivos con datos de energías renovables.</p>
-    </section>
+        <div class="container">
+            <h2>Tasa de Crecimiento Anual de Energías Renovables en Colombia (2000-2023)</h2>
+            
+           
+            
+            <canvas id="renovablesChart"></canvas>
+        </div>
 
     <section id="conclusiones">
         <h2>Conclusiones y Recomendaciones</h2>
